@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Rock/Paper/Scissors</title>
+	<link rel="stylesheet" href="game.css">
+	<link rel="stylesheet" href="https://www.malikdunston.com/assets/css/main.css">
+	<script src="game2.js"></script>
+	<script>
+		window.rockPaperScissors = {} || window.rockPaperScissors;
+		rockPaperScissors.runGame = runGame;
+		window.addEventListener("DOMContentLoaded", function(){
+			rockPaperScissors.runGame();
+		})
+	</script>
+</head>
+<body ng-app="app" ng-controller="mainCtrl">
+	<div class="top-section">
+		<div class="score-container">
+			<div>{{game.playerName}}</div>
+			<span id="playerScoreText">0</span>
+		</div>
+
+		<div class="round-result">
+			<div id="roundResultText"></div>
+			<div id="roundResultPlays"></div>
+			<button 
+				class="btn btn-sm btn-primary" id="resetBtn">
+				Start Over
+			</button>
+		</div>
+
+
+		<div class="score-container">
+			<div>Computer</div>
+			<span id="computerScoreText">0</span>
+		</div>
+	</div>
+
+	<div class="bottom-section">
+		<div
+			class="choice rock"
+			data-option="Rock">
+			<img src="./img/rock.png" alt="">
+			<span>Rock!</span>
+		</div>
+
+		<div
+			class="choice paper"
+			data-option="Paper">
+			<img src="./img/paper.png" alt="">
+			<span>Paper!</span>
+		</div>
+
+		<div
+			class="choice scissors"
+			data-option="Scissors">
+			<img src="./img/scissors.png" alt="">
+			<span>Scissors!</span>
+		</div>
+	</div>
+</body>
+</html>

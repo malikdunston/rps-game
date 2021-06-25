@@ -1,0 +1,80 @@
+navigation {
+	background: transparent;
+}
+
+contact-form {
+	display: none;
+}
+
+ui-view {
+	padding: 0;
+}
+
+.top-section {
+	height: 6rem;
+	display: flex;
+}
+
+.top-section * {
+	display: flex;
+	flex-direction: column;
+}
+
+.top-section #resetBtn {
+	margin: auto 0 24px 0;
+}
+
+.top-section .score-container {
+	border: 1px solid #fff;
+	padding: 12px;
+	font-size: 1.2em;
+	color: #fff;
+	width: 200px;
+	height: auto;
+	margin: 24px;
+}
+
+.top-section .score-container span {
+	font-size: 2em;
+}
+
+.top-section .score-container div {
+	margin-bottom: 15px;
+}
+
+.top-section .round-result #roundResultText {
+	text-align: center;
+	font-size: 1.8em;
+	margin: .85rem 0 0 0;
+}
+
+.top-section .round-result #roundResultPlays {
+	font-size: 1.4em;
+}
+
+.bottom-section {
+	height: calc(100vh - 7rem);
+}
+
+.bottom-section .choice {
+	display: flex;
+	width: 100%;
+	padding: 1rem;
+}
+
+.bottom-section .choice:nth-child(1) {
+	background: green;
+}
+
+.bottom-section .choice:nth-child(2) {
+	background: blue;
+}
+
+.bottom-section .choice:nth-child(3) {
+	background: red;
+}
+
+.bottom-section .choice span {
+	margin-top: .5rem;
+	font-size: .7rem;
+}
