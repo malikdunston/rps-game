@@ -1,0 +1,76 @@
+.score-container.rock{color:rgb(103, 174, 62);}
+.score-container.paper{color:rgb(80, 135, 199);}
+.score-container.scissors{color:rgb(209, 34, 62)};
+
+.round-result{
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0);
+	z-index: 1000;
+	display: none;
+	transition: .25s;
+	font-size: 2rem;
+}
+.round-result.show{
+	display: block;
+	background: rgba(0, 0, 0, 0.9);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+button{
+	position: absolute;
+	bottom: -3rem;
+}
+
+.bottom-section{
+	width: 100%;
+	height: 66.66vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.bottom-section .choice{
+	height: 33.33%;
+	flex: 33%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+img{
+	z-index: 500;
+	height: 50%;
+	width: auto;
+}
+
+.choice::before{ position: absolute; transform-origin: center center; content: ''; border-radius: 900px; width: 30px; height: 30px; transition: .5s; z-index: 100}
+.choice.selected::before{transform: scale(50)}
+
+.rock{background: rgba(103, 174, 62, .2);}
+.rock::before{background:rgb(103, 174, 62);}
+
+.paper{background: rgba(80, 135, 199, .2);}
+.paper::before{background:rgb(80, 135, 199);}
+
+.scissors{background:rgba(209, 34, 62, .2);}
+.scissors::before{background:rgb(209, 34, 62)};
+
+.choice.selected span{
+	display: none;
+}
+
+@media screen and (min-width: 400px){
+	.bottom-section{
+		flex-direction: row;
+	}
+	.bottom-section .choice{
+		height: 100%;
+	}
+    /*Tablets [601px -> 1200px]*/
+}

@@ -1,0 +1,121 @@
+body *{
+	font-weight: 500;
+}
+.top-section{
+	width: 8rem;
+	margin: 0 auto;
+	display: flex;
+	overflow: hidden;
+	height: 33.33vh;
+	position: relative;
+}
+
+.score-container{
+	position: absolute;
+	text-align: center;
+	top: 1.33rem;
+}
+.score-container:nth-child(1){
+	left: 1.25rem;
+}
+.score-container:nth-child(2){
+	right: 1.25rem;
+}
+.score-container div{
+	margin-bottom: .75rem;
+	letter-spacing: .1em;
+	font-weight: 300;
+	opacity: .5;
+}
+.score-container span{
+	font-size: 1.5rem;
+}
+.score-container.rock span{
+	color:rgb(103, 174, 62);
+}
+.score-container.paper span{
+	color:rgb(80, 135, 199);
+}
+.score-container.scissors span{
+	color:rgb(209, 34, 62);
+}
+
+
+
+
+.round-result{
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0);
+	z-index: 1000;
+	display: none;
+	transition: .5s;
+}
+.round-result *{
+	font-size: 1rem;
+	line-height: 1.15;
+	text-align: center;
+}
+.round-result.show{
+	display: block;
+	background: rgba(0, 0, 0, 0.9);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+button{
+	position: absolute;
+	bottom: -3rem;
+}
+
+.bottom-section{
+	width: 100%;
+	height: 66.66vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.bottom-section .choice{
+	height: 33.33%;
+	flex: 33%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+img{
+	z-index: 500;
+	height: 50%;
+	width: auto;
+}
+
+.choice::before{ position: absolute; transform-origin: center center; content: ''; border-radius: 900px; width: 30px; height: 30px; transition: .5s; z-index: 100}
+.choice.selected::before{transform: scale(50)}
+
+.choice.rock{background: rgba(103, 174, 62, .2);}
+.choice.rock::before{background:rgb(103, 174, 62);}
+
+.choice.paper{background: rgba(80, 135, 199, .2);}
+.choice.paper::before{background:rgb(80, 135, 199);}
+
+.choice.scissors{background:rgba(209, 34, 62, .2);}
+.choice.scissors::before{background:rgb(209, 34, 62);}
+
+.choice.selected span{
+	display: none;
+}
+
+@media screen and (min-width: 800px){
+	.bottom-section{
+		flex-direction: row;
+	}
+	.bottom-section .choice{
+		height: 100%;
+	}
+    /*Tablets [601px -> 1200px]*/
+}

@@ -4,62 +4,65 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Rock/Paper/Scissors</title>
-	<link rel="stylesheet" href="game.css">
-	<link rel="stylesheet" href="https://www.malikdunston.com/assets/css/main.css">
+	<title>rock/paper/scissors</title>
+	<!-- <link rel="stylesheet" href="https://www.malikdunston.com/assets/css/main.css"> -->
+	<link rel="stylesheet" href="https://portfolio.malikdunston.com/static/css/main.173a97d1.chunk.css">
+	<link rel="stylesheet" href="index.css">
 	<script src="game2.js"></script>
 	<script>
-		window.rockPaperScissors = {} || window.rockPaperScissors;
-		rockPaperScissors.runGame = runGame;
+		window.rockpaperscissors = {} || window.rockpaperscissors;
+		rockpaperscissors.runGame = runGame;
 		window.addEventListener("DOMContentLoaded", function(){
-			rockPaperScissors.runGame();
+			rockpaperscissors.runGame();
 		})
 	</script>
 </head>
 <body ng-app="app" ng-controller="mainCtrl">
 	<div class="top-section">
 		<div class="score-container">
-			<div>{{game.playerName}}</div>
+			<div>You</div>
 			<span id="playerScoreText">0</span>
 		</div>
-
-		<div class="round-result">
-			<div id="roundResultText"></div>
-			<div id="roundResultPlays"></div>
-			<button 
-				class="btn btn-sm btn-primary" id="resetBtn">
-				Start Over
-			</button>
-		</div>
-
-
 		<div class="score-container">
-			<div>Computer</div>
+			<div>PC</div>
 			<span id="computerScoreText">0</span>
 		</div>
+
+
+		<button 
+			class="btn btn-sm btn-primary" id="resetBtn">
+			Start Over
+		</button>
+
 	</div>
 
 	<div class="bottom-section">
 		<div
 			class="choice rock"
-			data-option="Rock">
+			data-option="rock">
 			<img src="./img/rock.png" alt="">
-			<span>Rock!</span>
+			<span>rock!</span>
 		</div>
 
 		<div
 			class="choice paper"
-			data-option="Paper">
+			data-option="paper">
 			<img src="./img/paper.png" alt="">
-			<span>Paper!</span>
+			<span>paper!</span>
 		</div>
 
 		<div
 			class="choice scissors"
-			data-option="Scissors">
+			data-option="scissors">
 			<img src="./img/scissors.png" alt="">
-			<span>Scissors!</span>
+			<span>scissors!</span>
 		</div>
 	</div>
+
+	<div class="round-result">
+		<div id="roundResultText"></div>
+		<div id="roundResultPlays"></div>
+	</div>
+
 </body>
 </html>

@@ -5,9 +5,9 @@ function runGame(){
 	const resetButton = document.querySelector('#resetBtn'); 
 
 	const choices = [
-		"Rock",
-		"Paper",
-		"Scissors"
+		"rock",
+		"paper",
+		"scissors"
 	];
 
 	let playerScore = 0;
@@ -17,11 +17,25 @@ function runGame(){
 
 
 	buttons.forEach(function(button){
-		button.addEventListener('click', function(){
-			let playerChoice = event.currentTarget.getAttribute('data-option');
-			playRound(playerChoice);
-		});
+		button.addEventListener('click', playerClick);
 	});
+		function playerClick(event){
+			let selected = event.currentTarget
+			let playerChoice = selected.getAttribute('data-option');
+			buttons.forEach(function(button){
+				button.removeEventListener("click", playerClick);
+			});
+			document.querySelectorAll(".score-container")[0].classList.add(playerChoice);
+			select(selected);
+			setTimeout(
+				()=>{playRound(playerChoice)}, 750
+			);
+		}	
+
+	function select(option){
+		option.classList.add("selected");
+	}
+
 
 	resetButton.addEventListener('click', function(){
 		resetGame();
@@ -29,62 +43,93 @@ function runGame(){
 
 
 
-	//Play a round of Rock, Paper, Scissors
+	//Play a round of rock, paper, scissors
 	function playRound(playerChoice) {
 		let randomIndex = Math.floor(Math.random() * choices.length);
 		let computerChoice = choices[randomIndex];
-		console.log(playerChoice, computerChoice);
 
-		if (playerChoice === computerChoice){
-			// console.log("tie");
-			resultText("tie");
-			return;
-		}	
-		if(playerChoice === "Rock"){
-			if(computerChoice === "Scissors"){
-				resultText("won");
+		select(
+			document.querySelector(`.${computerChoice}`)
+		);
+		document.querySelectorAll(".score-container")[1].classList.add(computerChoice);
+
+		setTimeout(()=>{
+			if (playerChoice === computerChoice){
+				resultText("tie");
+				return;
+			}	
+			if(playerChoice === "rock"){
+				if(computerChoice === "scissors"){
+					resultText("won");
+				}
+				if(computerChoice === "paper"){
+					resultText("lost");
+				}
 			}
-			if(computerChoice === "Paper"){
-				resultText("lost");
+			if(playerChoice === "paper"){
+				if(computerChoice === "rock"){
+					resultText("won");
+				}
+				if(computerChoice === "scissors"){
+					resultText("lost");
+				}
 			}
-		}
-		if(playerChoice === "Paper"){
-			if(computerChoice === "Rock"){
-				resultText("won");
+			if(playerChoice === "scissors"){
+				if(computerChoice === "paper"){
+					resultText("won");
+				}
+				if(computerChoice === "rock"){
+					resultText("lost");
+				}
 			}
-			if(computerChoice === "Scissors"){
-				resultText("lost");
-			}
-		}
-		if(playerChoice === "Scissors"){
-			if(computerChoice === "Paper"){
-				resultText("won");
-			}
-			if(computerChoice === "Rock"){
-				resultText("lost");
-			}
-		}
+
+		}, 1000)
+
+		buttons.forEach(function(button){
+			button.addEventListener('click', playerClick);
+		});
+
 	}
 
 
 	//Update the text between the scores with the result of the round and with what each player played
 	function resultText(result) {
 		if(playerScore == winningScore || computerScore == winningScore ){
-			gameOver();
+			let text;
+			if (playerScore > computerScore){
+				text = "player wins.";
+			} else{
+				text = "computer wins";
+			}
+			roundResultText.innerHTML = `${text}<br/><button onclick="resetGame()">New Game?</button>`;
+			return
 		}
+
 		if (result === "tie"){
-			roundResultText.innerHTML = "It was a tie.";
+			roundResultText.innerHTML = "Tie";
 		} else if (result === "won"){
 			playerScore ++;
 			playerScoreText.innerHTML = playerScore;
-			roundResultText.innerHTML = "You won!";
+			roundResultText.innerHTML = `You<br/>Win`;
 		} else if (result === "lost"){
 			computerScore ++;
 			computerScoreText.innerHTML = computerScore;
-			roundResultText.innerHTML = "You lost!";
-		} else{
-			// game is broken
+			roundResultText.innerHTML = `You<br/>Lose`;
 		}
+
+
+		document.querySelector(".round-result").classList.add("show");
+		setTimeout(()=>{
+			document.querySelectorAll(".score-container")[0].classList.remove("rock");
+			document.querySelectorAll(".score-container")[0].classList.remove("paper");
+			document.querySelectorAll(".score-container")[0].classList.remove("scissors");
+			document.querySelectorAll(".score-container")[1].classList.remove("rock");
+			document.querySelectorAll(".score-container")[1].classList.remove("paper");
+			document.querySelectorAll(".score-container")[1].classList.remove("scissors");
+			document.querySelector(".round-result").classList.remove("show");
+		}, 1500);
+
+		document.querySelectorAll(".choice").forEach(c=>{c.classList.remove("selected")})
 	}
 
 
@@ -99,15 +144,4 @@ function runGame(){
 		computerScoreText.innerHTML = "0";
 	}
 
-
-	//Alert the player whether they won or not after someone reaches 10 points
-	function gameOver() {
-
-		if (playerScore > computerScore){
-			alert("player wins.");
-		} else{
-			alert("computer wins");
-		}
-		resetGame();
-	}
 }
