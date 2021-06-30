@@ -18,6 +18,18 @@ function runGame(){
 
 	buttons.forEach(function(button){
 		button.addEventListener('click', playerClick);
+		button.addEventListener('touchstart', (ev)=>{
+			ev.currentTarget.classList.add("hover")
+		});
+		button.addEventListener('mouseenter', (ev)=>{
+			ev.currentTarget.classList.add("hover")
+		});
+		button.addEventListener('touchend', (ev)=>{
+			ev.currentTarget.classList.remove("hover")
+		});
+		button.addEventListener('mouseleave', (ev)=>{
+			ev.currentTarget.classList.remove("hover")
+		});
 	});
 		function playerClick(event){
 			let selected = event.currentTarget
