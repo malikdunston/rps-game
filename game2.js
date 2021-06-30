@@ -97,11 +97,12 @@ function runGame(){
 		if(playerScore == winningScore || computerScore == winningScore ){
 			let text;
 			if (playerScore > computerScore){
-				text = "player wins.";
+				text = "Player Wins.";
 			} else{
-				text = "computer wins";
+				text = "Computer Wins";
 			}
-			roundResultText.innerHTML = `${text}<br/><button onclick="resetGame()">New Game?</button>`;
+			roundResultText.innerHTML = `<div>${text}</div><button onclick="resetGame()">New Game?</button>`;
+			document.querySelector(".round-result").classList.add("show");
 			return
 		}
 
@@ -143,5 +144,7 @@ function runGame(){
 		playerScoreText.innerHTML = "0";
 		computerScoreText.innerHTML = "0";
 	}
+
+	resetGame()
 
 }
